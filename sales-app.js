@@ -1,4 +1,5 @@
 var firstAndPike = {
+  name: '1st and Pike',
   minCust: 23,
   maxCust: 65,
   operatingHours: 14,
@@ -19,6 +20,7 @@ var firstAndPike = {
 };
 
 var seaTacAirport = {
+  name: 'SeaTac Airport',
   minCust: 3,
   maxCust: 24,
   avgSalesPerCust: 1.2,
@@ -38,6 +40,7 @@ var seaTacAirport = {
 };
 
 var seattleCenter = {
+  name: 'Seattle Center',
   minCust: 11,
   maxCust: 38,
   avgSalesPerCust: 3.7,
@@ -57,6 +60,7 @@ var seattleCenter = {
 };
 
 var capHill = {
+  name: 'Capitol Hill',
   minCust: 20,
   maxCust: 38,
   avgSalesPerCust:2.3,
@@ -76,6 +80,7 @@ var capHill = {
 };
 
 var alki = {
+  name: 'Alki Beach',
   minCust: 2,
   maxCust: 16,
   avgSalesPerCust: 4.6,
@@ -93,6 +98,15 @@ var alki = {
     }
   }
 };
+
+function listProjectedHourlyAndSum() {
+  var container = document.createElement('div');
+  container.innterHTML = '<h3>' + this.name + '</h3>';
+  document.body.appendChild(container);
+}
+
+listProjectedHourlyAndSum()
+
 
 
 firstAndPike.projectedSalesPerHour();
