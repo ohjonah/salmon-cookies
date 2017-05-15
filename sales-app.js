@@ -8,11 +8,10 @@ var firstAndPike = {
   projectedSalesPerHour: function() {
     for (var i = 0; i < this.operatingHours; i++) {
       var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
-      console.log(cookiesSoldPerHour);
       this.projectedCookiesSoldPerDay.push(cookiesSoldPerHour);
     }
   },
-  totalSumCookiesSold: function() {
+  projectedSumOfCookies: function() {
     for (var i = 0; i < this.projectedCookiesSoldPerDay.length; i++) {
       this.projectedSumOfCookiesSoldPerDay += this.projectedCookiesSoldPerDay[i];
     }
@@ -20,8 +19,9 @@ var firstAndPike = {
 };
 
 firstAndPike.projectedSalesPerHour();
-firstAndPike.projectedCookiesSoldPerHour;
-firstAndPike.totalSumCookiesSold();
+firstAndPike.projectedSumOfCookies();
+firstAndPike.projectedCookiesSoldPerDay;
+firstAndPike.projectedSumOfCookiesSoldPerDay;
 
 var seaTacAirport = {
   minCust: 3,
