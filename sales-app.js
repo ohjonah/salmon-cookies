@@ -64,13 +64,6 @@ storeSalesByHour();
 totalSumByHour;
 
 
-
-
-
-
-
-
-
 //
 // Store.prototype.sales_stats = function() {
 //   var container = document.createElement('table');
