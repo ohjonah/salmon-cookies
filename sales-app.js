@@ -242,3 +242,25 @@ capHill.listNameAndUlInDom();
 alki.projectedSalesPerHour();
 alki.projectedSumOfCookies();
 alki.listNameAndUlInDom();
+
+
+function Store(name, minCust, maxCust, avgSalesPerCust, openHour, closeHour) {
+  this.name = name;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgSalesPerCust = avgSalesPerCust;
+  this.openHour = openHour;
+  this.closeHour = closeHour;
+}
+
+var firstAndPike = new Store('1st and Pike', 23, 65, 6.3, 6, 20);
+var seaTacAirport = new Store('SeaTac Airport', 3, 24, 1.2, 6, 20);
+var seattleCenter = new Store('Seattle Center', 11, 38, 3.7, 6, 20);
+var capHill = new Store('Capitol Hill', 20, 38, 2.3, 6, 20);
+var alki = new Store('Alki', 2, 16, 4.6, 6, 20);
+
+firstAndPike;
+seaTacAirport;
+seattleCenter;
+capHill;
+alki;
