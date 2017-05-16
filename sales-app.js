@@ -2,13 +2,12 @@ var firstAndPike = {
   name: '1st and Pike',
   minCust: 23,
   maxCust: 65,
-  openTime: 6,
-  closeTime: 20,
-  avgSalesPerCust:6.3,
+  avgSalesPerCust: 6.3,
+  operatingHoursArr: [7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8],
   projectedCookiesSoldPerDay: [],
   projectedSumOfCookiesSoldPerDay: 0,
   projectedSalesPerHour: function() {
-    for (var i = 0; i < (this.closeTime - this.openTime); i++) {
+    for (var i = 0; i < this.operatingHoursArr.length; i++) {
       var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
       this.projectedCookiesSoldPerDay.push(cookiesSoldPerHour);
     }
@@ -26,8 +25,14 @@ var firstAndPike = {
     var list = document.createElement('ul');
     var listArr = [];
 
-    for (var i = 0; i < this.projectedCookiesSoldPerDay.length; i++) {
-      listArr.push('<li>' + this.projectedCookiesSoldPerDay[i] + ' cookies' + '</li>');
+    for (var i = 0; i < this.operatingHoursArr.length; i++) {
+      if (i < 5) {
+        listArr.push('<li>' + this.operatingHoursArr[i] + ' am: ' + this.projectedCookiesSoldPerDay[i] + ' cookies' + '</li>');
+      } else if (i > 5) {
+        listArr.push('<li>' + this.operatingHoursArr[i] + ' pm: ' + this.projectedCookiesSoldPerDay[i] + ' cookies' + '</li>');
+      } else if (i === 5) {
+        listArr.push('<li>' + this.operatingHoursArr[5] + ' pm: ' + this.projectedCookiesSoldPerDay[i] + ' cookies' + '</li>');
+      }
     }
 
     listArr.push('<li>' + 'Total: ' + this.projectedSumOfCookiesSoldPerDay + ' cookies' + '</li>');
