@@ -105,14 +105,13 @@ main h3 {
   text-align: center;
 }
 
-#content h3 {
+#contact h3 {
   margin-top: 16px;
   margin-bottom: 10px;
 }
 
-#content {
-  height: 250px;
+#contact {
   margin-top: 49px;
   background: black;
-  color: orange;
+  color: white;
 }
