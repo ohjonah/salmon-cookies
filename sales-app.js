@@ -32,15 +32,13 @@ Store.prototype.addToTable = function() {
     data.push('<td>' + this.cookiesHourlySales[i] + '</td>');
   }
 
-  // console.log(data);
-
   for (var j = 0; j < data.length; j++) {
+    new_row = document.createElement('tr');
     new_row.innerHTML = data[j];
+    table.appendChild(new_row);
   }
-
-  new_row = document.createElement('tr');
-  table.appendChild(new_row);
 };
+
 
 var totalSumByHour = [];
 
