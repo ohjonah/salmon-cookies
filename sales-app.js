@@ -116,7 +116,8 @@ Store.prototype.addFooterDataToTable = function() {
   console.log(dataStringToArray);
 
   var new_row;
-  var tableFooter = document.getElementById('shell-foot');
+  var tableFooter = document.getEleme
+  ntById('shell-foot');
 
   for (var j = 0; j < dataStringToArray.length; j++) {
     new_row = document.createElement('tr');
