@@ -16,8 +16,20 @@ input[type="text"] {
   border-radius: 3px;
 }
 
+input[type="number"] {
+  padding: 7px;
+  margin-left: 7px;
+  border: solid 1px #000;
+  border-radius: 3px;
+}
+
 /* pseudo selector */
 input[type="text"]:focus {
+  background: #000;
+  color: #fff;
+}
+
+input[type="number"]:focus {
   background: #000;
   color: #fff;
 }
@@ -36,6 +48,8 @@ button {
 
 table {
   margin-left: 20px;
+  font-size: 14px;
+  text-align: center;
 }
 
 thead {
@@ -43,6 +57,6 @@ thead {
 }
 
 td {
-  padding: 20px;
+  padding: 10px;
   border: solid 1px #000;
 }
