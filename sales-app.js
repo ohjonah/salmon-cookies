@@ -42,6 +42,7 @@ Store.prototype.createTableExisting = function() {
   for (var i = 0; i < this.cookiesHourlySales.length; i++) {
     data.push('<td>' + this.cookiesHourlySales[i] + '</td>');
   }
+  data.push('<td>' + this.totalSum + '</td>');
   createTable(data);
 };
 
@@ -56,7 +57,6 @@ function createTable(data) {
     row = document.createElement('tr');
     row.innerHTML = dataArray[i];
   }
-
   table.appendChild(row);
 }
 
