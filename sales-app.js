@@ -21,38 +21,69 @@ Store.prototype.salesSum = function () {
   }
 };
 
-Store.prototype.addToTable = function() {
-  var dataInArray = [];
-  var dataRepushedInArr = [];
-  var dataAsAString;
-  var table = document.getElementById('shell');
+Store.prototype.addDataToTable = function() {
+  var dataStartingArray = [];
+  var dataTurnsIntoString;
+  var dataStringToArray = [];
 
-  dataInArray.push('<td>' + this.name + '</td>');
+  dataStartingArray.push('<td>' + this.name + '</td>');
 
   for (var i = 0; i < this.cookiesHourlySales.length; i++) {
-    dataInArray.push('<td>' + this.cookiesHourlySales[i] + '</td>');
+    dataStartingArray.push('<td>' + this.cookiesHourlySales[i] + '</td>');
   }
 
-  dataAsAString = dataInArray.join('');
-  dataRepushedInArr = dataAsAString.split();
+  dataStartingArray.push('<td>' + this.totalSum + '</td>');
 
-  // console.log(dataInArray);
-  console.log(dataRepushedInArr);
-  // console.log(dataAsAString);
+  dataTurnsIntoString = dataStartingArray.join('');
+  dataStringToArray = dataTurnsIntoString.split();
+
+  // console.log(dataStringToArray);
 
   var new_row;
+  var table = document.getElementById('shell');
 
-  for (var j = 0; j < dataRepushedInArr.length; j++) {
-    new_row = document.createElement('tr'); // 'for each in data array, I want to make a new row'
-    new_row.innerHTML = dataRepushedInArr[j];
+  for (var j = 0; j < dataStringToArray.length; j++) {
+    new_row = document.createElement('tr');
+    new_row.innerHTML = dataStringToArray[j];
     table.appendChild(new_row);
   }
+};
 
+Store.prototype.addHeaderDataToTable = function() {
+  var dataStartingArray = [];
+  var dataTurnsIntoString;
+  var dataStringToArray = [];
 
+  dataStartingArray.push('<td>' + '</td>');
+  for (var i = 0; i < this.hoursOfOperation.length; i++) {
+    if (i < 5) {
+      dataStartingArray.push('<td>' + this.hoursOfOperation[i] + ':00 AM' + '</td>');
+    } else if (i > 5) {
+      dataStartingArray.push('<td>' + this.hoursOfOperation[i] + ':00 PM' + '</td>');
+    } else if (i === 5) {
+      dataStartingArray.push('<td>' + this.hoursOfOperation[5] + ':00 PM' + '</td>');
+    }
+  }
+  dataStartingArray.push('<td>' + 'Daily Location Total' + '</td>');
+
+  dataTurnsIntoString = dataStartingArray.join('');
+  dataStringToArray = dataTurnsIntoString.split();
+
+  console.log(dataStringToArray);
+  console.log(dataStringToArray.length);
+
+  var new_row;
+  var table = document.getElementById('shell-head');
+
+  for (var j = 0; j < dataStringToArray.length; j++) {
+    new_row = document.createElement('tr');
+    new_row.innerHTML = dataStringToArray[j];
+    table.appendChild(new_row);
+  }
 };
 
 
-
+// total sum of all stores by hour
 
 var totalSumByHour = [];
 
@@ -67,6 +98,33 @@ function storeSalesByHour() {
     }
   }
 }
+//
+// Store.prototype.addFooterDataToTable = function() {
+//   var dataStartingArray = [];
+//   var dataTurnsIntoString;
+//   var dataStringToArray = [];
+//
+//   dataStartingArray.push('<td>' + 'Totals' + '</td>');
+//   console.log('anything here? ' + totalSumByHour);
+//
+//   for (var i = 0; i < totalSumByHour.length; i++) {
+//     dataStartingArray.push('<td>' + totalSumByHour[i] + '</td>');
+//   }
+//
+//   dataTurnsIntoString = dataStartingArray.join('r');
+//   dataStringToArray = dataTurnsIntoString.split();
+//
+//   console.log(dataStringToArray);
+//
+//   var new_row;
+//   var tableFooter = document.getElementById('shell-foot');
+//
+//   for (var j = 0; j < dataStringToArray.length; j++) {
+//     new_row = document.createElement('tr');
+//     new_row.innerHTML = dataStringToArray[j];
+//     tableFooter.appendChild(new_row);
+//   }
+// };
 
 var firstAndPike = new Store('1st and Pike', 23, 65, 6.3);
 var seaTacAirport = new Store('SeaTac Airport', 3, 24, 1.2);
@@ -81,7 +139,9 @@ function render() {
     locations[i];
     locations[i].salesPerHour();
     locations[i].salesSum();
-    locations[i].addToTable();
+    locations[i].addDataToTable();
+    // locations[i].addFooterDataToTable();
+    locations[i].addHeaderDataToTable();
   }
   storeSalesByHour();
 }
