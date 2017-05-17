@@ -21,6 +21,27 @@ Store.prototype.salesSum = function () {
   }
 };
 
+Store.prototype.addToTable = function() {
+  var data = [];
+  var table = document.getElementById('shell');
+  var new_row;
+
+  data.push('<td>' + this.name + '</td>');
+
+  for (var i = 0; i < this.cookiesHourlySales.length; i++) {
+    data.push('<td>' + this.cookiesHourlySales[i] + '</td>');
+  }
+
+  // console.log(data);
+
+  for (var j = 0; j < data.length; j++) {
+    new_row.innerHTML = data[j];
+  }
+
+  new_row = document.createElement('tr');
+  table.appendChild(new_row);
+};
+
 var totalSumByHour = [];
 
 function storeSalesByHour() {
@@ -43,65 +64,14 @@ var alki = new Store('Alki', 2, 16, 4.6);
 
 var locations = [firstAndPike, seaTacAirport, seattleCenter, capHill, alki];
 
-// DOM Maniuplation
-
-
-// Store.prototype.addTableHeader = function() {
-//   var tableHeader = document.getElementById('shell-head')
-//   var timeArr = [];
-//
-//   for (var i = 0; i < 14; i++) {
-//     if (i < 5) {
-//       timeArr.push('<td>' + this.hoursOfOperation[i] + ' am: ' + '</td>');
-//     } else if (i > 5) {
-//       timeArr.push('<td>' + this.hoursOfOperation[i] + ' pm: ' + '</td>');
-//     } else if (i === 5) {
-//       timeArr.push('<td>' + this.hoursOfOperation[5] + ' pm: ' + '</td>');
-//     }
-//   }
-//   console.log('our time array:', timeArr);
-// }
-//
-// Store.prototype.addTable = function() {
-//   var table = document.getElementById('shell');
-//
-//
-// }
-
-function launchTheConstructor() {
+function render() {
   for (var i = 0; i < locations.length; i++) {
     locations[i];
     locations[i].salesPerHour();
     locations[i].salesSum();
+    locations[i].addToTable();
   }
   storeSalesByHour();
 }
 
-launchTheConstructor();
-totalSumByHour; // displays array of total sales of all stores by hour
-
-
-
-
-var table = document.getElementById('shell');
-
-
-for (var i = 0; i < locations.length; i++) {
-  var data = [];
-  var new_row;
-
-  data.push('<td>' + locations[i].name + '</td>');
-
-  for (var j = 0; j < locations[i].cookiesHourlySales.length; j++) {
-    data.push('<td>' + locations[i].cookiesHourlySales[j] + '</td>');
-  }
-  
-  new_row = document.createElement('tr');
-  new_row.innerHTML = data[i];
-  table.appendChild(new_row);
-}
-
-
-
-
-console.log('our data array:', data);
+render();
