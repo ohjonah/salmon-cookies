@@ -1,3 +1,5 @@
+var table = document.getElementById('shell');
+
 function Store(name, minCust, maxCust, avgSalesPerCust) {
   this.name = name;
   this.minCust = minCust;
@@ -21,18 +23,17 @@ Store.prototype.salesSum = function () {
   }
 };
 
-// total sum of all stores by hour
-// var totalSumByHour = [];
-//
-// Store.prototype.storeSalesByHour = function() {
-//   for (var i = 0; i < this.cookiesHourlySales.length; i++) {
-//     if (i === 0) {
-//       totalSumByHour.push(this.cookiesHourlySales[i]);
-//     } else if (i > 0) {
-//       totalSumByHour[i] = totalSumByHour[i] + this.cookiesHourlySales[i];
-//     }
-//   }
-// };
+Store.prototype.storeSalesByHour = function() {
+  var totalSumByHour = [];
+
+  for (var i = 0; i < this.cookiesHourlySales.length; i++) {
+    if (i === 0) {
+      totalSumByHour.push(this.cookiesHourlySales[i]);
+    } else if (i > 0) {
+      totalSumByHour[i] = totalSumByHour[i] + this.cookiesHourlySales[i];
+    }
+  }
+};
 
 
 Store.prototype.createTableExisting = function() {
@@ -46,7 +47,6 @@ Store.prototype.createTableExisting = function() {
   createTable(data);
 };
 
-var table = document.getElementById('shell');
 
 function createTable(data) {
   var row;
@@ -59,98 +59,6 @@ function createTable(data) {
   }
   table.appendChild(row);
 }
-
-// Store.prototype.addDataToTable = function() {
-//   var dataStartingArray = [];
-//   var dataTurnsIntoString;
-//   var dataStringToArray = [];
-//
-//   dataStartingArray.push('<td>' + this.name + '</td>');
-//
-//   for (var i = 0; i < this.cookiesHourlySales.length; i++) {
-//     dataStartingArray.push('<td>' + this.cookiesHourlySales[i] + '</td>');
-//   }
-//
-//   dataStartingArray.push('<td>' + this.totalSum + '</td>');
-//
-//   dataTurnsIntoString = dataStartingArray.join('');
-//   dataStringToArray = dataTurnsIntoString.split();
-//
-//   // console.log(dataStringToArray);
-//
-//   var new_row;
-//   var table = document.getElementById('shell');
-//
-//   for (var j = 0; j < dataStringToArray.length; j++) {
-//     new_row = document.createElement('tr');
-//     new_row.innerHTML = dataStringToArray[j];
-//     table.appendChild(new_row);
-//   }
-// };
-
-// function addHeaderDataToTable() {
-//   var dataStartingArray = [];
-//   var dataTurnsIntoString;
-//   var dataStringToArray = [];
-//
-//   dataStartingArray.push('<td>' + '</td>');
-//   for (var i = 0; i < location[i].hoursOfOperation.length; i++) {
-//     if (i < 5) {
-//       dataStartingArray.push('<td>' + location[i].hoursOfOperation[i] + ':00 AM' + '</td>');
-//     } else if (i > 5) {
-//       dataStartingArray.push('<td>' + location[i].hoursOfOperation[i] + ':00 PM' + '</td>');
-//     } else if (i === 5) {
-//       dataStartingArray.push('<td>' + location[i].hoursOfOperation[i] + ':00 PM' + '</td>');
-//     }
-//   }
-//
-//   dataStartingArray.push('<td>' + 'Daily Location Total' + '</td>');
-//
-//   dataTurnsIntoString = dataStartingArray.join('');
-//   dataStringToArray = dataTurnsIntoString.split();
-//
-//   console.log(dataTurnsIntoString);
-//   console.log(dataTurnsIntoString.length);
-//   console.log(dataStringToArray);
-//   console.log(dataStringToArray.length);
-//
-//   var new_row;
-//   var table = document.getElementById('shell-head');
-//
-//   for (var j = 0; j < dataStringToArray.length; j++) {
-//     new_row = document.createElement('tr');
-//     new_row.innerHTML = dataStringToArray[j];
-//     table.appendChild(new_row);
-//   }
-// }
-
-// Store.prototype.addFooterDataToTable = function() {
-//   var dataStartingArray = [];
-//   var dataTurnsIntoString;
-//   var dataStringToArray = [];
-//
-//   dataStartingArray.push('<td>' + 'Totals' + '</td>');
-//   console.log('anything here? ' + totalSumByHour);
-//
-//   for (var i = 0; i < totalSumByHour.length; i++) {
-//     dataStartingArray.push('<td>' + totalSumByHour[i] + '</td>');
-//   }
-//
-//   dataTurnsIntoString = dataStartingArray.join('r');
-//   dataStringToArray = dataTurnsIntoString.split();
-//
-//   console.log(dataStringToArray);
-//
-//   var new_row;
-//   var tableFooter = document.getEleme
-//   ntById('shell-foot');
-//
-//   for (var j = 0; j < dataStringToArray.length; j++) {
-//     new_row = document.createElement('tr');
-//     new_row.innerHTML = dataStringToArray[j];
-//     tableFooter.appendChild(new_row);
-//   }
-// };
 
 var firstAndPike = new Store('1st and Pike', 23, 65, 6.3);
 var seaTacAirport = new Store('SeaTac Airport', 3, 24, 1.2);
@@ -166,11 +74,7 @@ function render() {
     locations[i].salesPerHour();
     locations[i].salesSum();
     locations[i].createTableExisting();
-    // locations[i].addDataToTable();
-    // locations[i].storeSalesByHour();
-    // locations[i].addFooterDataToTable();
   }
-  // addHeaderDataToTable();
 }
 
 render();
