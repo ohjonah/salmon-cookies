@@ -22,22 +22,36 @@ Store.prototype.salesSum = function () {
 };
 
 Store.prototype.addToTable = function() {
-  var data = [];
+  var dataInArray = [];
+  var dataRepushedInArr = [];
+  var dataAsAString;
   var table = document.getElementById('shell');
-  var new_row;
 
-  data.push('<td>' + this.name + '</td>');
+  dataInArray.push('<td>' + this.name + '</td>');
 
   for (var i = 0; i < this.cookiesHourlySales.length; i++) {
-    data.push('<td>' + this.cookiesHourlySales[i] + '</td>');
+    dataInArray.push('<td>' + this.cookiesHourlySales[i] + '</td>');
   }
 
-  for (var j = 0; j < data.length; j++) {
-    new_row = document.createElement('tr');
-    new_row.innerHTML = data[j];
+  dataAsAString = dataInArray.join('');
+  dataRepushedInArr = dataAsAString.split();
+
+  // console.log(dataInArray);
+  console.log(dataRepushedInArr);
+  // console.log(dataAsAString);
+
+  var new_row;
+
+  for (var j = 0; j < dataRepushedInArr.length; j++) {
+    new_row = document.createElement('tr'); // 'for each in data array, I want to make a new row'
+    new_row.innerHTML = dataRepushedInArr[j];
     table.appendChild(new_row);
   }
+
+
 };
+
+
 
 
 var totalSumByHour = [];
