@@ -8,6 +8,9 @@ function Store(name, minCust, maxCust, avgSalesPerCust) {
   this.hoursOfOperation = [7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8 ];
   this.cookiesHourlySales = [];
   this.totalSum = 0;
+  this.salesPerHour();
+  this.salesSum();
+  this.createTableExisting();
 }
 
 Store.prototype.salesPerHour = function() {
@@ -68,13 +71,37 @@ var alki = new Store('Alki', 2, 16, 4.6);
 
 var locations = [firstAndPike, seaTacAirport, seattleCenter, capHill, alki];
 
-function render() {
-  for (var i = 0; i < locations.length; i++) {
-    locations[i];
-    locations[i].salesPerHour();
-    locations[i].salesSum();
-    locations[i].createTableExisting();
-  }
+var form = document.getElementById('main_form');
+var newData;
+
+function formData(e) {
+  e.preventDefault();
+
+  var store_name = event.target.store_name.value;
+  var min_cust = event.target.min_cust.value;
+  var max_cust = event.target.max_cust.value;
+  var avg_sales_cust = event.target.avg_sales_cust.value;
+
+  newData = new Store(store_name, min_cust, max_cust, avg_sales_cust);
 }
 
-render();
+Store.prototype.parseNewData = function() {
+  newData.push('<td>' + this.name + '</td>');
+
+  for (var i = 0; i < this.cookiesHourlySales.length; i++) {
+    newData.push('<td>' + this.cookiesHourlySales[i] + '</td>');
+  }
+  newData.push('<td>' + this.totalSum + '</td>');
+  createTable(newData);
+  form.reset();
+};
+
+// function render() {
+//   for (var i = 0; i < locations.length; i++) {
+//     locations[i].createTableExisting();
+//   }
+// }
+//
+// render();
+
+form.addEventListener('submit', formData);
