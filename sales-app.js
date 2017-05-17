@@ -68,13 +68,13 @@ function addHeaderDataToTable() {
   var dataStringToArray = [];
 
   dataStartingArray.push('<td>' + '</td>');
-  for (var i = 0; i < this.hoursOfOperation.length; i++) {
+  for (var i = 0; i < location[i].hoursOfOperation.length; i++) {
     if (i < 5) {
-      dataStartingArray.push('<td>' + this.hoursOfOperation[i] + ':00 AM' + '</td>');
+      dataStartingArray.push('<td>' + location[i].hoursOfOperation[i] + ':00 AM' + '</td>');
     } else if (i > 5) {
-      dataStartingArray.push('<td>' + this.hoursOfOperation[i] + ':00 PM' + '</td>');
+      dataStartingArray.push('<td>' + location[i].hoursOfOperation[i] + ':00 PM' + '</td>');
     } else if (i === 5) {
-      dataStartingArray.push('<td>' + this.hoursOfOperation[i] + ':00 PM' + '</td>');
+      dataStartingArray.push('<td>' + location[i].hoursOfOperation[i] + ':00 PM' + '</td>');
     }
   }
 
