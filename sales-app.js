@@ -49,7 +49,7 @@ Store.prototype.addDataToTable = function() {
   }
 };
 
-Store.prototype.addHeaderDataToTable = function() {
+function addHeaderDataToTable() {
   var dataStartingArray = [];
   var dataTurnsIntoString;
   var dataStringToArray = [];
@@ -83,7 +83,7 @@ Store.prototype.addHeaderDataToTable = function() {
     new_row.innerHTML = dataStringToArray[j];
     table.appendChild(new_row);
   }
-};
+}
 
 
 // total sum of all stores by hour
@@ -144,8 +144,8 @@ function render() {
     locations[i].salesSum();
     locations[i].addDataToTable();
     // locations[i].addFooterDataToTable();
-    locations[i].addHeaderDataToTable();
   }
+  addHeaderDataToTable();
   storeSalesByHour();
 }
 
