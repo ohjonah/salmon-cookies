@@ -61,14 +61,17 @@ Store.prototype.addHeaderDataToTable = function() {
     } else if (i > 5) {
       dataStartingArray.push('<td>' + this.hoursOfOperation[i] + ':00 PM' + '</td>');
     } else if (i === 5) {
-      dataStartingArray.push('<td>' + this.hoursOfOperation[5] + ':00 PM' + '</td>');
+      dataStartingArray.push('<td>' + this.hoursOfOperation[i] + ':00 PM' + '</td>');
     }
   }
+
   dataStartingArray.push('<td>' + 'Daily Location Total' + '</td>');
 
   dataTurnsIntoString = dataStartingArray.join('');
   dataStringToArray = dataTurnsIntoString.split();
 
+  console.log(dataTurnsIntoString);
+  console.log(dataTurnsIntoString.length);
   console.log(dataStringToArray);
   console.log(dataStringToArray.length);
 
