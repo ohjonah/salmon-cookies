@@ -95,10 +95,13 @@ for (var i = 0; i < locations.length; i++) {
   for (var j = 0; j < locations[i].cookiesHourlySales.length; j++) {
     data.push('<td>' + locations[i].cookiesHourlySales[j] + '</td>');
   }
-
+  
   new_row = document.createElement('tr');
   new_row.innerHTML = data[i];
   table.appendChild(new_row);
 }
+
+
+
 
 console.log('our data array:', data);
