@@ -1,3 +1,5 @@
+var table = document.getElementById('shell');
+
 function Store(name, minCust, maxCust, avgSalesPerCust) {
   this.name = name;
   this.minCust = minCust;
@@ -6,112 +8,72 @@ function Store(name, minCust, maxCust, avgSalesPerCust) {
   this.hoursOfOperation = [7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8 ];
   this.cookiesHourlySales = [];
   this.totalSum = 0;
+  this.salesPerHour();
+  this.createTableExisting();
 }
+
 
 Store.prototype.salesPerHour = function() {
   for (var i = 0; i < this.hoursOfOperation.length; i++) {
     var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
     this.cookiesHourlySales.push(cookiesSoldPerHour);
+    this.totalSum += cookiesSoldPerHour;
   }
 };
 
-Store.prototype.salesSum = function () {
-  for (var i = 0; i < this.cookiesHourlySales.length; i++) {
-    this.totalSum += this.cookiesHourlySales[i];
-  }
-};
-
-// total sum of all stores by hour
-var totalSumByHour = [];
-
-Store.prototype.storeSalesByHour = function() {
-  for (var i = 0; i < this.cookiesHourlySales.length; i++) {
-    if (i === 0) {
-      totalSumByHour.push(this.cookiesHourlySales[i]);
-    } else if (i > 0) {
-      totalSumByHour[i] = totalSumByHour[i] + this.cookiesHourlySales[i];
-    }
-  }
-};
-
-Store.prototype.addDataToTable = function() {
-  var dataStartingArray = [];
-  var dataTurnsIntoString;
-  var dataStringToArray = [];
-
-  dataStartingArray.push('<td>' + this.name + '</td>');
+Store.prototype.createTableExisting = function() {
+  var data = [];
+  data.push('<td>' + this.name + '</td>');
 
   for (var i = 0; i < this.cookiesHourlySales.length; i++) {
-    dataStartingArray.push('<td>' + this.cookiesHourlySales[i] + '</td>');
+    data.push('<td>' + this.cookiesHourlySales[i] + '</td>');
   }
-
-  dataStartingArray.push('<td>' + this.totalSum + '</td>');
-
-  dataTurnsIntoString = dataStartingArray.join('');
-  dataStringToArray = dataTurnsIntoString.split();
-
-  // console.log(dataStringToArray);
-
-  var new_row;
-  var table = document.getElementById('shell');
-
-  for (var j = 0; j < dataStringToArray.length; j++) {
-    new_row = document.createElement('tr');
-    new_row.innerHTML = dataStringToArray[j];
-    table.appendChild(new_row);
-  }
+  data.push('<td>' + this.totalSum + '</td>');
+  createTable(data);
 };
 
-function addHeaderDataToTable() {
-  var dataStartingArray = [];
-  var dataTurnsIntoString;
-  var dataStringToArray = [];
-  var hoursOfOperation = [7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8 ];
+function createTable(data) {
+  var row;
+  var dataTurnsIntoString = data.join('');
+  var dataArray = dataTurnsIntoString.split('  ');
 
-  dataStartingArray.push('<td>' + '</td>');
-  for (var i = 0; i < hoursOfOperation.length; i++) {
-    if (i < 5) {
-      dataStartingArray.push('<td>' + hoursOfOperation[i] + ':00 AM' + '</td>');
-    } else {
-      dataStartingArray.push('<td>' + hoursOfOperation[i] + ':00 PM' + '</td>');
-    }
+  for (var i = 0; i <dataArray.length; i++) {
+    row = document.createElement('tr');
+    row.innerHTML = dataArray[i];
   }
-
-  dataStartingArray.push('<td>' + 'Daily Location Total' + '</td>');
-
-  dataTurnsIntoString = dataStartingArray.join('');
-  console.log(dataTurnsIntoString);
-  dataStringToArray = dataTurnsIntoString.split();
-  console.log(dataStringToArray);
-
-  var new_row;
-  var table = document.getElementById('shell-head');
-
-  for (var j = 0; j < dataStringToArray.length; j++) {
-    new_row = document.createElement('tr');
-    new_row.innerHTML = dataStringToArray[j];
-    table.appendChild(new_row);
-  }
+  table.appendChild(row);
 }
 
-var firstAndPike = new Store('1st and Pike', 23, 65, 6.3);
-var seaTacAirport = new Store('SeaTac Airport', 3, 24, 1.2);
-var seattleCenter = new Store('Seattle Center', 11, 38, 3.7);
-var capHill = new Store('Capitol Hill', 20, 38, 2.3);
-var alki = new Store('Alki', 2, 16, 4.6);
+new Store('1st and Pike', 23, 65, 6.3);
+new Store('SeaTac Airport', 3, 24, 1.2);
+new Store('Seattle Center', 11, 38, 3.7);
+new Store('Capitol Hill', 20, 38, 2.3);
+new Store('Alki', 2, 16, 4.6);
 
-var locations = [firstAndPike, seaTacAirport, seattleCenter, capHill, alki];
+var form = document.getElementById('main_form');
+var newData;
 
-function render() {
-  for (var i = 0; i < locations.length; i++) {
-    locations[i];
-    locations[i].salesPerHour();
-    locations[i].salesSum();
-    locations[i].addDataToTable();
-    locations[i].storeSalesByHour();
-    // locations[i].addFooterDataToTable();
-  }
-  addHeaderDataToTable();
+function formData(e) {
+  e.preventDefault();
+
+  var store_name = event.target.store_name.value;
+  var min_cust = parseInt(event.target.min_cust.value);
+  var max_cust = parseInt(event.target.max_cust.value);
+  var avg_sales_cust = parseInt(event.target.avg_sales_cust.value);
+
+  newData = new Store(store_name, min_cust, max_cust, avg_sales_cust);
+  // console.log(newData);
+  form.reset();
 }
 
-render();
+Store.prototype.parseNewData = function() {
+  newData.push('<td>' + this.name + '</td>');
+
+  for (var i = 0; i < this.cookiesHourlySales.length; i++) {
+    newData.push('<td>' + this.cookiesHourlySales[i] + '</td>');
+  }
+  newData.push('<td>' + this.totalSum + '</td>');
+  createTable(newData);
+};
+
+form.addEventListener('submit', formData);
