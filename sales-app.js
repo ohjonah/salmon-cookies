@@ -9,7 +9,6 @@ function Store(name, minCust, maxCust, avgSalesPerCust) {
   this.cookiesHourlySales = [];
   this.totalSum = 0;
   this.salesPerHour();
-  this.salesSum();
   this.createTableExisting();
 }
 
@@ -17,27 +16,9 @@ Store.prototype.salesPerHour = function() {
   for (var i = 0; i < this.hoursOfOperation.length; i++) {
     var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
     this.cookiesHourlySales.push(cookiesSoldPerHour);
+    this.totalSum += cookiesSoldPerHour;
   }
 };
-
-Store.prototype.salesSum = function () {
-  for (var i = 0; i < this.cookiesHourlySales.length; i++) {
-    this.totalSum += this.cookiesHourlySales[i];
-  }
-};
-
-Store.prototype.storeSalesByHour = function() {
-  var totalSumByHour = [];
-
-  for (var i = 0; i < this.cookiesHourlySales.length; i++) {
-    if (i === 0) {
-      totalSumByHour.push(this.cookiesHourlySales[i]);
-    } else if (i > 0) {
-      totalSumByHour[i] = totalSumByHour[i] + this.cookiesHourlySales[i];
-    }
-  }
-};
-
 
 Store.prototype.createTableExisting = function() {
   var data = [];
@@ -69,8 +50,6 @@ var seattleCenter = new Store('Seattle Center', 11, 38, 3.7);
 var capHill = new Store('Capitol Hill', 20, 38, 2.3);
 var alki = new Store('Alki', 2, 16, 4.6);
 
-var locations = [firstAndPike, seaTacAirport, seattleCenter, capHill, alki];
-
 var form = document.getElementById('main_form');
 var newData;
 
@@ -83,6 +62,7 @@ function formData(e) {
   var avg_sales_cust = event.target.avg_sales_cust.value;
 
   newData = new Store(store_name, min_cust, max_cust, avg_sales_cust);
+  form.reset();
 }
 
 Store.prototype.parseNewData = function() {
@@ -93,7 +73,6 @@ Store.prototype.parseNewData = function() {
   }
   newData.push('<td>' + this.totalSum + '</td>');
   createTable(newData);
-  form.reset();
 };
 
 // function render() {
