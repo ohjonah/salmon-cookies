@@ -12,6 +12,7 @@ function Store(name, minCust, maxCust, avgSalesPerCust) {
   this.createTableExisting();
 }
 
+
 Store.prototype.salesPerHour = function() {
   for (var i = 0; i < this.hoursOfOperation.length; i++) {
     var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
@@ -31,7 +32,6 @@ Store.prototype.createTableExisting = function() {
   createTable(data);
 };
 
-
 function createTable(data) {
   var row;
   var dataTurnsIntoString = data.join('');
@@ -50,6 +50,7 @@ new Store('Seattle Center', 11, 38, 3.7);
 new Store('Capitol Hill', 20, 38, 2.3);
 new Store('Alki', 2, 16, 4.6);
 
+
 var form = document.getElementById('main_form');
 var newData;
 
@@ -62,7 +63,7 @@ function formData(e) {
   var avg_sales_cust = parseInt(event.target.avg_sales_cust.value);
 
   newData = new Store(store_name, min_cust, max_cust, avg_sales_cust);
-  console.log(newData);
+  // console.log(newData);
   form.reset();
 }
 
@@ -75,5 +76,6 @@ Store.prototype.parseNewData = function() {
   newData.push('<td>' + this.totalSum + '</td>');
   createTable(newData);
 };
+
 
 form.addEventListener('submit', formData);
