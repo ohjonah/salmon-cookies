@@ -14,7 +14,7 @@ function Store(name, minCust, maxCust, avgSalesPerCust) {
 
 Store.prototype.salesPerHour = function() {
   for (var i = 0; i < this.hoursOfOperation.length; i++) {
-    var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
+    var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
     this.cookiesHourlySales.push(cookiesSoldPerHour);
     this.totalSum += cookiesSoldPerHour;
   }
