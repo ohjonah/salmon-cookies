@@ -44,11 +44,11 @@ function createTable(data) {
   table.appendChild(row);
 }
 
-var firstAndPike = new Store('1st and Pike', 23, 65, 6.3);
-var seaTacAirport = new Store('SeaTac Airport', 3, 24, 1.2);
-var seattleCenter = new Store('Seattle Center', 11, 38, 3.7);
-var capHill = new Store('Capitol Hill', 20, 38, 2.3);
-var alki = new Store('Alki', 2, 16, 4.6);
+new Store('1st and Pike', 23, 65, 6.3);
+new Store('SeaTac Airport', 3, 24, 1.2);
+new Store('Seattle Center', 11, 38, 3.7);
+new Store('Capitol Hill', 20, 38, 2.3);
+new Store('Alki', 2, 16, 4.6);
 
 var form = document.getElementById('main_form');
 var newData;
@@ -57,11 +57,12 @@ function formData(e) {
   e.preventDefault();
 
   var store_name = event.target.store_name.value;
-  var min_cust = event.target.min_cust.value;
-  var max_cust = event.target.max_cust.value;
-  var avg_sales_cust = event.target.avg_sales_cust.value;
+  var min_cust = parseInt(event.target.min_cust.value);
+  var max_cust = parseInt(event.target.max_cust.value);
+  var avg_sales_cust = parseInt(event.target.avg_sales_cust.value);
 
   newData = new Store(store_name, min_cust, max_cust, avg_sales_cust);
+  console.log(newData);
   form.reset();
 }
 
@@ -74,13 +75,5 @@ Store.prototype.parseNewData = function() {
   newData.push('<td>' + this.totalSum + '</td>');
   createTable(newData);
 };
-
-// function render() {
-//   for (var i = 0; i < locations.length; i++) {
-//     locations[i].createTableExisting();
-//   }
-// }
-//
-// render();
 
 form.addEventListener('submit', formData);
