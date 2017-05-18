@@ -8,7 +8,7 @@ var firstAndPike = {
   projectedSumOfCookiesSoldPerDay: 0,
   projectedSalesPerHour: function() {
     for (var i = 0; i < this.operatingHoursArr.length; i++) {
-      var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
+      var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
       this.projectedCookiesSoldPerDay.push(cookiesSoldPerHour);
     }
   },
@@ -53,7 +53,7 @@ var seaTacAirport = {
   projectedSumOfCookiesSoldPerDay: 0,
   projectedSalesPerHour: function() {
     for (var i = 0; i < this.operatingHoursArr.length; i++) {
-      var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
+      var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
       this.projectedCookiesSoldPerDay.push(cookiesSoldPerHour);
     }
   },
@@ -98,7 +98,7 @@ var seattleCenter = {
   projectedSumOfCookiesSoldPerDay: 0,
   projectedSalesPerHour: function() {
     for (var i = 0; i < this.operatingHoursArr.length; i++) {
-      var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
+      var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
       this.projectedCookiesSoldPerDay.push(cookiesSoldPerHour);
     }
   },
@@ -143,7 +143,7 @@ var capHill = {
   projectedSumOfCookiesSoldPerDay: 0,
   projectedSalesPerHour: function() {
     for (var i = 0; i < this.operatingHoursArr.length; i++) {
-      var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
+      var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
       this.projectedCookiesSoldPerDay.push(cookiesSoldPerHour);
     }
   },
@@ -188,7 +188,7 @@ var alki = {
   projectedSumOfCookiesSoldPerDay: 0,
   projectedSalesPerHour: function() {
     for (var i = 0; i < this.operatingHoursArr.length; i++) {
-      var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
+      var cookiesSoldPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
       this.projectedCookiesSoldPerDay.push(cookiesSoldPerHour);
     }
   },
