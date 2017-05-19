@@ -1,6 +1,11 @@
+body {
+  font-family: Roboto helvetica arial;
+  font-size: 12px;
+}
+
 table {
-  font-family: helvetica, arial, verdana;
-  font-size: 14px;
+  font-family: Roboto helvetica arial verdana;
+  font-size: 12px;
   text-align: center;
 }
 
@@ -9,6 +14,7 @@ thead {
 }
 
 td {
-  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
   border: solid 1px black;
 }
