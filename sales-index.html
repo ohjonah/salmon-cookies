@@ -3,35 +3,37 @@
   <head>
     <title>Salmon Cookies Dashboard</title>
     <link rel="stylesheet" href="reset.css">
-    <!-- <link rel="stylesheet" href="sales-style.css"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="table-style.css">
   </head>
 
   <body>
-    <form id="main_form">
-      <fieldset>
-        <label for="store_name">Store Name:</label>
-        <input type="text" name="store_name" placeholder="enter the store name" required>
-      </fieldset>
+    <div class="main-form-input">
+      <form id="main_form">
+        <fieldset>
+          <label for="store_name">Store Name:</label>
+          <input type="text" name="store_name" placeholder="enter the store name" required>
+        </fieldset>
 
-      <fieldset>
-        <label for="min_cust">Minimum Customers:</label>
-        <input type="number" name="min_cust" placeholder="min # of customers" required>
-      </fieldset>
+        <fieldset class="questions">
+          <label for="min_cust">Minimum Customers:</label>
+          <input type="number" name="min_cust" placeholder="min # of customers" required>
+        </fieldset>
 
-      <fieldset>
-        <label for="max_cust">Maximum Customers:</label>
-        <input type="number" name="max_cust" placeholder="max # of customers" required>
-      </fieldset>
+        <fieldset class="questions">
+          <label for="max_cust">Maximum Customers:</label>
+          <input type="number" name="max_cust" placeholder="max # of customers" required>
+        </fieldset>
 
-      <fieldset>
-        <label for="avg_sales_cust">Average Sales/Customer</label>
-        <input type="text" name="avg_sales_cust" placeholder="avg sales/customer" required>
-      </fieldset>
+        <fieldset class="questions">
+          <label for="avg_sales_cust">Average Sales/Customer</label>
+          <input type="text" name="avg_sales_cust" placeholder="avg sales/customer" required>
+        </fieldset>
 
-      <button id="submit-btn" type="submit">Add Store!</button>
-
-    </form>
+        <!-- <div class="clearfix"></div> -->
+        <button id="submit-btn" type="submit">Add Store!</button>
+      </form>
+    </div>
   </body>
 
   <table>
@@ -62,6 +64,7 @@
     </tfoot>
 
   </table>
+
 
 
   <script src="sales-app.js"></script>
