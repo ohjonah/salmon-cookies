@@ -26,6 +26,8 @@ header div {
 
 header div img {
   float: left;
+  width: 200px;
+  height: 63px;
   margin-right: 50px;
   margin-top: 15px;
 }
@@ -114,53 +116,16 @@ p {
   margin-right: 90px;
 }
 
-
-/*
-.article-content {
-  width: 100%;
-  height: 200px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+.article-content img {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
 }
 
-
-#about h3 {
-  margin-top: 16px;
-  margin-bottom: 10px;
-}
-
-#about {
-  margin-top: 49px;
-  background: black;
-  padding: 0 10px 0 10px;
-  color: white;
-}
-
-#blog h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  padding-top: 50px;
-  padding-bottom: 0px;
-}
-
-#blog {
-  margin-top: 49px;
-  background: white;
-  height: 250px;
+.contact-us {
   text-align: center;
+
 }
-
-#contact h3 {
-  margin-top: 16px;
-  margin-bottom: 10px;
-}
-
-#contact {
-  margin-top: 49px;
-  background: black;
-  color: white;
-}*/
-
 .clearfix {
   clear: both;
 }
